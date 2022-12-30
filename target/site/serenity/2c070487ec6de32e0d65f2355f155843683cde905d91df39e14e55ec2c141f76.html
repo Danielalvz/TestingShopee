@@ -1,0 +1,1682 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8"/>
+    <title>Agregar un producto al carrito de compras</title>
+<link rel="shortcut icon" type="image/x-icon" href="favicon.ico">
+<link rel="apple-touch-icon" sizes="57x57" href="apple-icon-57x57.png">
+<link rel="apple-touch-icon" sizes="60x60" href="apple-icon-60x60.png">
+<link rel="apple-touch-icon" sizes="72x72" href="apple-icon-72x72.png">
+<link rel="apple-touch-icon" sizes="76x76" href="apple-icon-76x76.png">
+<link rel="apple-touch-icon" sizes="114x114" href="apple-icon-114x114.png">
+<link rel="apple-touch-icon" sizes="120x120" href="apple-icon-120x120.png">
+<link rel="apple-touch-icon" sizes="144x144" href="apple-icon-144x144.png">
+<link rel="apple-touch-icon" sizes="152x152" href="apple-icon-152x152.png">
+<link rel="apple-touch-icon" sizes="180x180" href="apple-icon-180x180.png">
+<link rel="icon" type="image/png" sizes="192x192"  href="android-icon-192x192.png">
+<link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="96x96" href="favicon-96x96.png">
+<link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
+<meta name="msapplication-TileColor" content="#ffffff">
+<meta name="msapplication-TileImage" content="/ms-icon-144x144.png">
+<meta name="theme-color" content="#ffffff">
+<!--[if IE 7]>
+<!--<link rel="stylesheet" href="font-awesome/css/font-awesome-ie7.min.css">-->
+
+<link rel="stylesheet" type="text/css" href="fontawesome-free-5.7.2-web/css/all.min.css">
+<link rel="stylesheet" type="text/css" href="fontawesome-free-5.7.2-web/css/v4-shims.min.css">
+
+<!-- JQuery -->
+<script type="text/javascript" src="scripts/jquery-1.11.1.min.js"></script><link rel="stylesheet" type="text/css" href="chartist/chartist-plugin-tooltip/dist/chartist-plugin-tooltip.min.css">
+<link rel="stylesheet" type="text/css" href="chartist/dist/chartist.min.css">
+<script src="chartist/dist/chartist.min.js"></script>
+<script src="chartist/chartist-plugin-tooltip/dist/chartist-plugin-tooltip.min.js"></script>
+<!-- Required Stylesheets -->
+<link href="bootstrap-treeview/dist/bootstrap-treeview.min.css" rel="stylesheet">
+
+<!-- Required Javascript -->
+<script src="bootstrap-treeview/dist/bootstrap-treeview.min.js"></script><!-- DataTables -->
+<link type="text/css" href="datatables/1.10.19/datatables.min.css" rel="stylesheet" />
+<script type="text/javascript" src="datatables/1.10.19/datatables.min.js"></script>
+<script type="text/javascript" src="datatables/1.10.19/time-elapsed-dhms.js"></script>
+
+<link href="bootstrap/css/bootstrap.min.css" rel="stylesheet">
+<script src="bootstrap/js/bootstrap.min.js"></script>
+
+<script type="text/javascript" src="datatables/1.10.19/datatables.bootstrap4.min.js"></script>
+<link type="text/css" href="datatables/1.10.19/datatables.bootstrap4.min.css" rel="stylesheet" />
+
+<script>
+    jQuery.fn.dataTable.ext.type.order['time-elapsed-dhms-pre'] = function(data) {
+
+        var matches = data.match(/^(\d+(?:\.\d+)?)\s*([a-z]+)/i);
+        var multipliers = {
+            ms: 1,
+            s: 1000,
+            m: 60000,
+            h: 3600000,
+            d: 86400000
+        };
+
+        if (matches) {
+            var multiplier = multipliers[matches[2].toLowerCase()];
+            return parseFloat(matches[1]) * multiplier;
+        } else {
+            return -1;
+        };
+    };
+</script>
+<link rel="stylesheet" href="css/core.css"/>
+<link rel="stylesheet" href="css/link.css"/>
+<link type="text/css" media="screen" href="css/screen.css" rel="Stylesheet"/><!-- JQuery-UI -->
+<link type="text/css" href="jqueryui/1.11.2-start/jquery-ui.min.css" rel="Stylesheet" />
+<script type="text/javascript" src="jqueryui/1.11.2-start/jquery-ui.min.js"></script><!-- DataTables -->
+<link type="text/css" href="datatables/1.10.19/datatables.min.css" rel="stylesheet" />
+<script type="text/javascript" src="datatables/1.10.19/datatables.min.js"></script>
+<script type="text/javascript" src="datatables/1.10.19/time-elapsed-dhms.js"></script>
+
+<link href="bootstrap/css/bootstrap.min.css" rel="stylesheet">
+<script src="bootstrap/js/bootstrap.min.js"></script>
+
+<script type="text/javascript" src="datatables/1.10.19/datatables.bootstrap4.min.js"></script>
+<link type="text/css" href="datatables/1.10.19/datatables.bootstrap4.min.css" rel="stylesheet" />
+
+<script>
+    jQuery.fn.dataTable.ext.type.order['time-elapsed-dhms-pre'] = function(data) {
+
+        var matches = data.match(/^(\d+(?:\.\d+)?)\s*([a-z]+)/i);
+        var multipliers = {
+            ms: 1,
+            s: 1000,
+            m: 60000,
+            h: 3600000,
+            d: 86400000
+        };
+
+        if (matches) {
+            var multiplier = multipliers[matches[2].toLowerCase()];
+            return parseFloat(matches[1]) * multiplier;
+        } else {
+            return -1;
+        };
+    };
+</script>
+<!-- ImgPreview -->
+<script src="scripts/imgpreview.full.jquery.js" type="text/javascript"></script>
+</head>
+
+<body class="results-page">
+
+
+<div id="topheader">
+    <div id="topbanner">
+        <div id="logo"><a href="index.html"><img src="images/serenity-logo.png" border="0"/></a></div>
+        <div id="projectname-banner" style="float:right">
+            <span class="projectname">
+                <span class="projecttitle"></span>
+                <span class="projectsubtitle"></span>
+            </span>
+        </div>
+    </div>
+</div>
+
+<div class="middlecontent">
+    <div id="contenttop">
+        <div class="middlebg">
+        <span class="breadcrumbs">
+            <a href="index.html" class="breadcrumbs">Home</a>
+
+        > Agregar un producto al carrito de compras
+        </span>
+        </div>
+        <div class="rightbg"></div>
+    </div>
+
+    <div class="clr"></div>
+
+    <!--/* starts second table*/-->
+<div>
+    <ul class="nav nav-tabs" role="tablist">
+        <li class="active">
+            <a href="#"><i class="fa fa-check-square-o"></i> Overall Test Results</a>
+        </li>
+        <li >
+            <a href="capabilities.html"><i class="fa fa-book"></i> Requirements</a>
+        </li>
+    </ul>
+    <span class="date-and-time"><a href="build-info.html"><i class="fa fa-info-circle"></i></a> Report generated 30-12-2023 16:16</span>
+    <br style="clear:left"/>
+</div>
+    <div class="clr"></div>
+
+
+    <div id="contentbody">
+        <div class="titlebar">
+            <div class="story-title">
+                <table class="outcome-header">
+                    <tr>
+                        <td>
+                                <div>
+                                    <h3 class="discreet-story-header">
+                                        <i class="fa fa-2x fa-comments-o"></i>
+                                        <span class="story-header-title">Buscar Un Producto Por Categoria</span>
+                                    </h3>
+                                </div>
+
+                        </td>
+                        <td valign="top">
+                        </td>
+                    </tr>
+                </table>
+            </div>
+            <div class="story-title">
+                <table class="outcome-header">
+                    <tr>
+                        <td colspan="2" class="test-title-bar">
+                            <span class="outcome-icon"><a href='##beforetable'><i class='fa fa-check-circle-o success-icon fa-2x' title='SUCCESS'></i></a></span>
+                            <span class="test-case-title">
+                                <span class="success-color">
+                                    Agregar un producto al carrito de compras
+                                        <span class="related-issue-title"></span>
+                                </span>
+                            </span>
+
+                        </td>
+                    </tr>
+                </table>
+            </div>
+
+
+                <!-- CAST MEMBERS -->
+                <div>&nbsp;</div>
+                <div class="story-title">
+                    <table class="outcome-header">
+                        <tr>
+                            <td>
+                                <div>
+                                    <h3 class="discreet-story-header">
+                                        <i class="fa fa-2x fa-users"></i>
+                                        <span class="story-header-title">
+                                            <a class="btn btn-primary" data-toggle="collapse" href="#castDetails"
+                                               role="button" aria-expanded="true" aria-controls="castDetails">Cast</a>
+                                        </span>
+                                    </h3>
+
+                                    <div class="cast-member collapse" id="castDetails">
+                                        <table class="cast">
+                                            <tr>
+                                                    <td width="100%">
+                                                        <h4>
+                                                            <i class="fa fa-2x fa-user-o"></i>&nbsp;<span>usuario</span>
+                                                            <h4>
+                                                                <p></p>
+                                                                <ul>
+                                                                        <li><strong>usuario can:</strong>
+                                                                            <ul>
+                                                                                    <li>browse the web</li>
+                                                                            </ul>
+                                                                        </li>
+                                                                </ul>
+                                                    </td>
+                                            </tr>
+                                        </table>
+                                    </div>
+                                </div>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+                <!-- END CAST MEMBERS -->
+
+
+        </div>
+    </div>
+
+    <div class="clr"></div>
+
+        <div class="story-title">
+            <h3 class="story-header">Scenario Outline</h3>
+
+            <div class="scenario">Given Deseo buscar un producto en shopee<br>When Selecciona la categoria "&lt;categoria&gt;", seccion "&lt;seccion&gt;" el producto "&lt;producto&gt;" y sus especificaciones "&lt;color&gt;" "&lt;cantidad&gt;"<br>Then Valida que el producto sea agregado al carrito de compras</div>
+
+        </div>
+
+    <div id="beforetable"></div>
+
+
+            <h3 class="story-header">Examples:&nbsp;</h3>
+
+
+                <p class="example-tag">
+                </p>
+
+            <div class="example-table test-report">
+                <table class="table">
+                    <thead>
+                    <tr>
+                        <th>#</th>
+                            <th>Categoria</th>
+                            <th>Seccion</th>
+                            <th>Producto</th>
+                            <th>Color</th>
+                            <th>Cantidad</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td class="test-SUCCESS"><a href="#0">1</a></td>
+                                <td class="test-SUCCESS"><a
+                                            href="#0">Celulares</a>
+                                </td>
+                                <td class="test-SUCCESS"><a
+                                            href="#0">Audio</a>
+                                </td>
+                                <td class="test-SUCCESS"><a
+                                            href="#0">Aud&iacute;fonos inal&aacute;mbricos Bluetooth V6U5</a>
+                                </td>
+                                <td class="test-SUCCESS"><a
+                                            href="#0">Blanco</a>
+                                </td>
+                                <td class="test-SUCCESS"><a
+                                            href="#0">2</a>
+                                </td>
+                        </tr>
+                        <tr>
+                            <td class="test-SUCCESS"><a href="#1">2</a></td>
+                                <td class="test-SUCCESS"><a
+                                            href="#1">Ropa de Mujer</a>
+                                </td>
+                                <td class="test-SUCCESS"><a
+                                            href="#1">Pantalones</a>
+                                </td>
+                                <td class="test-SUCCESS"><a
+                                            href="#1">Pantalones Cargo</a>
+                                </td>
+                                <td class="test-SUCCESS"><a
+                                            href="#1">Black</a>
+                                </td>
+                                <td class="test-SUCCESS"><a
+                                            href="#1">3</a>
+                                </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+    <div id="tablecontents">
+        <div>
+            <table class="step-table">
+                <tr class="step-titles">
+                    <th width="65">
+                    </th>
+                    <th class="step-description-column greentext">
+                        Steps
+                    </th>
+
+                        <th width="150" class="greentext">Screenshots</th>
+                    <th width="130" class="greentext">Outcome</th>
+                    <th width="100" class="greentext"><i title="Duration" class="far fa-clock"></i></th>
+                </tr>
+                <tr class="step-table-separator">
+                    <td colspan="5"></td>
+                </tr>
+
+                    <tr class="test-SUCCESS">
+
+                        <td width="50" class="step-icon">
+                            <a name="0"></a>
+                                <a href="javaScript:void(0)" onClick="toggleDiv('stepSection0')"
+                                   style="display:block">
+                                    <i class="fa fa-plus-square-o imgstepSection0 success-icon"
+                                       style="margin-left: 20px; float:left; padding-right:5px"></i>
+                                </a>
+                        </td>
+
+                        <td class="step-description-column">
+                            <div class="step-description">
+                                <a href="javaScript:void(0)" onClick="toggleDiv('stepSection0')"
+                                   style="display:block;">
+                                    <span class="top-level-step">
+                                                Example: {categoria=Celulares, seccion=Audio, producto=Audífonos inalámbricos Bluetooth V6U5, color=Blanco, cantidad=2}
+                                        </span>
+                                </a>
+                                <span class="evidence">
+                                </span>
+                            </div>
+                        </td>
+
+                            <td width="160" class="SUCCESS-text">
+                                    <a href="2c070487ec6de32e0d65f2355f155843683cde905d91df39e14e55ec2c141f76_screenshots.html#screenshots?screenshot=0">
+                                        <img src="9010a67ee4ec99716ecd22222f986e35bd4cea4d69546b208d933ebecfcb86f9.png"
+                                             href="9010a67ee4ec99716ecd22222f986e35bd4cea4d69546b208d933ebecfcb86f9.png"
+                                             class="screenshot"
+                                             width="48" height="48"/>
+                                    </a>
+                                    <i class="fas fa-arrow-right"></i>
+
+                                    <a href="2c070487ec6de32e0d65f2355f155843683cde905d91df39e14e55ec2c141f76_screenshots.html#screenshots?screenshot=28">
+                                        <img src="62e90733ad92eb41c8a26a965bf26ab63dd3dfb5a89cf4e4de6210bbd5b34642.png"
+                                             href="62e90733ad92eb41c8a26a965bf26ab63dd3dfb5a89cf4e4de6210bbd5b34642.png"
+                                             class="screenshot"
+                                             width="48" height="48"/>
+                                    </a>
+                            </td>
+                        <td width="130"><span class="top-level-step">SUCCESS</span></td>
+                        <td width="100"><span class="top-level-step">39.44s</span></td>
+                    </tr>
+                        <tr>
+                            <td colspan="5">
+                                <table id="stepSection0" class="step-table-nested" style="display:none;">
+
+                    <tr class="test-SUCCESS">
+
+                        <td width="70" class="step-icon">
+                            <a name="0-0"></a>
+                                <a href="javaScript:void(0)" onClick="toggleDiv('stepSection0-0')"
+                                   style="display:block">
+                                    <i class="fa fa-plus-square-o imgstepSection0-0 success-icon"
+                                       style="margin-left: 40px; float:left; padding-right:5px"></i>
+                                </a>
+                        </td>
+
+                        <td class="step-description-column">
+                            <div class="step-description">
+                                <a href="javaScript:void(0)" onClick="toggleDiv('stepSection0-0')"
+                                   style="display:block;">
+                                    <span class="nested-step">
+                                                Given Deseo buscar un producto en shopee
+                                        </span>
+                                </a>
+                                <span class="evidence">
+                                </span>
+                            </div>
+                        </td>
+
+                            <td width="160" class="SUCCESS-text">
+
+                                    <a href="2c070487ec6de32e0d65f2355f155843683cde905d91df39e14e55ec2c141f76_screenshots.html#screenshots?screenshot=3">
+                                        <img src="9010a67ee4ec99716ecd22222f986e35bd4cea4d69546b208d933ebecfcb86f9.png"
+                                             href="9010a67ee4ec99716ecd22222f986e35bd4cea4d69546b208d933ebecfcb86f9.png"
+                                             class="screenshot"
+                                             width="48" height="48"/>
+                                    </a>
+                            </td>
+                        <td width="130"><span class="nested-step">SUCCESS</span></td>
+                        <td width="100"><span class="nested-step">5.61s</span></td>
+                    </tr>
+                        <tr>
+                            <td colspan="5">
+                                <table id="stepSection0-0" class="step-table-nested" style="display:none;">
+
+                    <tr class="test-SUCCESS">
+
+                        <td width="90" class="step-icon">
+                            <a name="0-0-0"></a>
+                                <span style="margin-left: 60px;"
+                                      class="nested-group-icon"><a href='##beforetable'><i class='fa fa-check-circle-o success-icon ' title='SUCCESS'></i></a>
+                                </span>
+                        </td>
+
+                        <td class="step-description-column">
+                            <div class="step-description">
+                                    <span class="nested-group-step">
+                                                usuario opens the Shopee home
+                                        </span>
+                                <span class="evidence">
+                                </span>
+                            </div>
+                        </td>
+
+                            <td width="160" class="SUCCESS-text">
+
+                                    <a href="2c070487ec6de32e0d65f2355f155843683cde905d91df39e14e55ec2c141f76_screenshots.html#screenshots?screenshot=2">
+                                        <img src="9010a67ee4ec99716ecd22222f986e35bd4cea4d69546b208d933ebecfcb86f9.png"
+                                             href="9010a67ee4ec99716ecd22222f986e35bd4cea4d69546b208d933ebecfcb86f9.png"
+                                             class="screenshot"
+                                             width="48" height="48"/>
+                                    </a>
+                            </td>
+                        <td width="130"><span class="nested-group-step">SUCCESS</span></td>
+                        <td width="100"><span class="nested-group-step">5.1s</span></td>
+                    </tr>
+
+                                </table>
+                            </td>
+                        </tr>
+                    <tr class="test-SUCCESS">
+
+                        <td width="70" class="step-icon">
+                            <a name="0-1"></a>
+                                <a href="javaScript:void(0)" onClick="toggleDiv('stepSection0-1')"
+                                   style="display:block">
+                                    <i class="fa fa-plus-square-o imgstepSection0-1 success-icon"
+                                       style="margin-left: 40px; float:left; padding-right:5px"></i>
+                                </a>
+                        </td>
+
+                        <td class="step-description-column">
+                            <div class="step-description">
+                                <a href="javaScript:void(0)" onClick="toggleDiv('stepSection0-1')"
+                                   style="display:block;">
+                                    <span class="nested-step">
+                                                When Selecciona la categoria "Celulares", seccion "Audio" el producto "Audífonos inalámbricos Bluetooth V6U5" y sus especificaciones "Blanco" "2"
+                                        </span>
+                                </a>
+                                <span class="evidence">
+                                </span>
+                            </div>
+                        </td>
+
+                            <td width="160" class="SUCCESS-text">
+                                    <a href="2c070487ec6de32e0d65f2355f155843683cde905d91df39e14e55ec2c141f76_screenshots.html#screenshots?screenshot=4">
+                                        <img src="9010a67ee4ec99716ecd22222f986e35bd4cea4d69546b208d933ebecfcb86f9.png"
+                                             href="9010a67ee4ec99716ecd22222f986e35bd4cea4d69546b208d933ebecfcb86f9.png"
+                                             class="screenshot"
+                                             width="48" height="48"/>
+                                    </a>
+                                    <i class="fas fa-arrow-right"></i>
+
+                                    <a href="2c070487ec6de32e0d65f2355f155843683cde905d91df39e14e55ec2c141f76_screenshots.html#screenshots?screenshot=23">
+                                        <img src="49e4881364e283d8b6b2ee6c13894f271a314e1861ee1b496726c5d9c3a94c6f.png"
+                                             href="49e4881364e283d8b6b2ee6c13894f271a314e1861ee1b496726c5d9c3a94c6f.png"
+                                             class="screenshot"
+                                             width="48" height="48"/>
+                                    </a>
+                            </td>
+                        <td width="130"><span class="nested-step">SUCCESS</span></td>
+                        <td width="100"><span class="nested-step">33.15s</span></td>
+                    </tr>
+                        <tr>
+                            <td colspan="5">
+                                <table id="stepSection0-1" class="step-table-nested" style="display:none;">
+
+                    <tr class="test-SUCCESS">
+
+                        <td width="90" class="step-icon">
+                            <a name="0-1-0"></a>
+                                <a href="javaScript:void(0)" onClick="toggleDiv('stepSection0-1-0')"
+                                   style="display:block">
+                                    <i class="fa fa-plus-square-o imgstepSection0-1-0 success-icon"
+                                       style="margin-left: 60px; float:left; padding-right:5px"></i>
+                                </a>
+                        </td>
+
+                        <td class="step-description-column">
+                            <div class="step-description">
+                                <a href="javaScript:void(0)" onClick="toggleDiv('stepSection0-1-0')"
+                                   style="display:block;">
+                                    <span class="nested-step">
+                                                Usuario buscar producto
+                                        </span>
+                                </a>
+                                <span class="evidence">
+                                </span>
+                            </div>
+                        </td>
+
+                            <td width="160" class="SUCCESS-text">
+                                    <a href="2c070487ec6de32e0d65f2355f155843683cde905d91df39e14e55ec2c141f76_screenshots.html#screenshots?screenshot=5">
+                                        <img src="9010a67ee4ec99716ecd22222f986e35bd4cea4d69546b208d933ebecfcb86f9.png"
+                                             href="9010a67ee4ec99716ecd22222f986e35bd4cea4d69546b208d933ebecfcb86f9.png"
+                                             class="screenshot"
+                                             width="48" height="48"/>
+                                    </a>
+                                    <i class="fas fa-arrow-right"></i>
+
+                                    <a href="2c070487ec6de32e0d65f2355f155843683cde905d91df39e14e55ec2c141f76_screenshots.html#screenshots?screenshot=8">
+                                        <img src="a53450d26847638ec26f4e5e25ada1530f762f76f826aff9fe8b7684eb08b12a.png"
+                                             href="a53450d26847638ec26f4e5e25ada1530f762f76f826aff9fe8b7684eb08b12a.png"
+                                             class="screenshot"
+                                             width="48" height="48"/>
+                                    </a>
+                            </td>
+                        <td width="130"><span class="nested-step">SUCCESS</span></td>
+                        <td width="100"><span class="nested-step">24.42s</span></td>
+                    </tr>
+                        <tr>
+                            <td colspan="5">
+                                <table id="stepSection0-1-0" class="step-table-nested" style="display:none;">
+
+                    <tr class="test-SUCCESS">
+
+                        <td width="110" class="step-icon">
+                            <a name="0-1-0-0"></a>
+                                <span style="margin-left: 80px;"
+                                      class="nested-group-icon"><a href='##beforetable'><i class='fa fa-check-circle-o success-icon ' title='SUCCESS'></i></a>
+                                </span>
+                        </td>
+
+                        <td class="step-description-column">
+                            <div class="step-description">
+                                    <span class="nested-group-step">
+                                                usuario clicks on Selecciona el tipo de categoria por titulo
+                                        </span>
+                                <span class="evidence">
+                                </span>
+                            </div>
+                        </td>
+
+                            <td width="160" class="SUCCESS-text">
+                                    <a href="2c070487ec6de32e0d65f2355f155843683cde905d91df39e14e55ec2c141f76_screenshots.html#screenshots?screenshot=6">
+                                        <img src="d781ffa4215d863b9e2775e17cfd61f0ffea211233eeaa55a91c588aaec19bf1.png"
+                                             href="d781ffa4215d863b9e2775e17cfd61f0ffea211233eeaa55a91c588aaec19bf1.png"
+                                             class="screenshot"
+                                             width="48" height="48"/>
+                                    </a>
+                                    <i class="fas fa-arrow-right"></i>
+
+                                    <a href="2c070487ec6de32e0d65f2355f155843683cde905d91df39e14e55ec2c141f76_screenshots.html#screenshots?screenshot=7">
+                                        <img src="a53450d26847638ec26f4e5e25ada1530f762f76f826aff9fe8b7684eb08b12a.png"
+                                             href="a53450d26847638ec26f4e5e25ada1530f762f76f826aff9fe8b7684eb08b12a.png"
+                                             class="screenshot"
+                                             width="48" height="48"/>
+                                    </a>
+                            </td>
+                        <td width="130"><span class="nested-group-step">SUCCESS</span></td>
+                        <td width="100"><span class="nested-group-step">1.11s</span></td>
+                    </tr>
+
+                                </table>
+                            </td>
+                        </tr>
+                    <tr class="test-SUCCESS">
+
+                        <td width="90" class="step-icon">
+                            <a name="0-1-1"></a>
+                                <a href="javaScript:void(0)" onClick="toggleDiv('stepSection0-1-1')"
+                                   style="display:block">
+                                    <i class="fa fa-plus-square-o imgstepSection0-1-1 success-icon"
+                                       style="margin-left: 60px; float:left; padding-right:5px"></i>
+                                </a>
+                        </td>
+
+                        <td class="step-description-column">
+                            <div class="step-description">
+                                <a href="javaScript:void(0)" onClick="toggleDiv('stepSection0-1-1')"
+                                   style="display:block;">
+                                    <span class="nested-step">
+                                                Usuario elegir seccion
+                                        </span>
+                                </a>
+                                <span class="evidence">
+                                </span>
+                            </div>
+                        </td>
+
+                            <td width="160" class="SUCCESS-text">
+                                    <a href="2c070487ec6de32e0d65f2355f155843683cde905d91df39e14e55ec2c141f76_screenshots.html#screenshots?screenshot=10">
+                                        <img src="a53450d26847638ec26f4e5e25ada1530f762f76f826aff9fe8b7684eb08b12a.png"
+                                             href="a53450d26847638ec26f4e5e25ada1530f762f76f826aff9fe8b7684eb08b12a.png"
+                                             class="screenshot"
+                                             width="48" height="48"/>
+                                    </a>
+                                    <i class="fas fa-arrow-right"></i>
+
+                                    <a href="2c070487ec6de32e0d65f2355f155843683cde905d91df39e14e55ec2c141f76_screenshots.html#screenshots?screenshot=15">
+                                        <img src="9010a67ee4ec99716ecd22222f986e35bd4cea4d69546b208d933ebecfcb86f9.png"
+                                             href="9010a67ee4ec99716ecd22222f986e35bd4cea4d69546b208d933ebecfcb86f9.png"
+                                             class="screenshot"
+                                             width="48" height="48"/>
+                                    </a>
+                            </td>
+                        <td width="130"><span class="nested-step">SUCCESS</span></td>
+                        <td width="100"><span class="nested-step">3.78s</span></td>
+                    </tr>
+                        <tr>
+                            <td colspan="5">
+                                <table id="stepSection0-1-1" class="step-table-nested" style="display:none;">
+
+                    <tr class="test-SUCCESS">
+
+                        <td width="110" class="step-icon">
+                            <a name="0-1-1-0"></a>
+                                <span style="margin-left: 80px;"
+                                      class="nested-group-icon"><a href='##beforetable'><i class='fa fa-check-circle-o success-icon ' title='SUCCESS'></i></a>
+                                </span>
+                        </td>
+
+                        <td class="step-description-column">
+                            <div class="step-description">
+                                    <span class="nested-group-step">
+                                                usuario clicks on Selector de seccion de producto
+                                        </span>
+                                <span class="evidence">
+                                </span>
+                            </div>
+                        </td>
+
+                            <td width="160" class="SUCCESS-text">
+                                    <a href="2c070487ec6de32e0d65f2355f155843683cde905d91df39e14e55ec2c141f76_screenshots.html#screenshots?screenshot=11">
+                                        <img src="e1b5ff11e17fa93c14c151a5e961a219db3ab5493b59fbd95adb32aef4e2ef57.png"
+                                             href="e1b5ff11e17fa93c14c151a5e961a219db3ab5493b59fbd95adb32aef4e2ef57.png"
+                                             class="screenshot"
+                                             width="48" height="48"/>
+                                    </a>
+                                    <i class="fas fa-arrow-right"></i>
+
+                                    <a href="2c070487ec6de32e0d65f2355f155843683cde905d91df39e14e55ec2c141f76_screenshots.html#screenshots?screenshot=12">
+                                        <img src="0bff3f6ba901b4524420d5dc52321cba1be37ac518134a658bdbaee61807ad4e.png"
+                                             href="0bff3f6ba901b4524420d5dc52321cba1be37ac518134a658bdbaee61807ad4e.png"
+                                             class="screenshot"
+                                             width="48" height="48"/>
+                                    </a>
+                            </td>
+                        <td width="130"><span class="nested-group-step">SUCCESS</span></td>
+                        <td width="100"><span class="nested-group-step">0.84s</span></td>
+                    </tr>
+                    <tr class="test-SUCCESS">
+
+                        <td width="110" class="step-icon">
+                            <a name="0-1-1-1"></a>
+                                <span style="margin-left: 80px;"
+                                      class="nested-group-icon"><a href='##beforetable'><i class='fa fa-check-circle-o success-icon ' title='SUCCESS'></i></a>
+                                </span>
+                        </td>
+
+                        <td class="step-description-column">
+                            <div class="step-description">
+                                    <span class="nested-group-step">
+                                                usuario clicks on Selecciona producto por titulo
+                                        </span>
+                                <span class="evidence">
+                                </span>
+                            </div>
+                        </td>
+
+                            <td width="160" class="SUCCESS-text">
+                                    <a href="2c070487ec6de32e0d65f2355f155843683cde905d91df39e14e55ec2c141f76_screenshots.html#screenshots?screenshot=13">
+                                        <img src="0bff3f6ba901b4524420d5dc52321cba1be37ac518134a658bdbaee61807ad4e.png"
+                                             href="0bff3f6ba901b4524420d5dc52321cba1be37ac518134a658bdbaee61807ad4e.png"
+                                             class="screenshot"
+                                             width="48" height="48"/>
+                                    </a>
+                                    <i class="fas fa-arrow-right"></i>
+
+                                    <a href="2c070487ec6de32e0d65f2355f155843683cde905d91df39e14e55ec2c141f76_screenshots.html#screenshots?screenshot=14">
+                                        <img src="9010a67ee4ec99716ecd22222f986e35bd4cea4d69546b208d933ebecfcb86f9.png"
+                                             href="9010a67ee4ec99716ecd22222f986e35bd4cea4d69546b208d933ebecfcb86f9.png"
+                                             class="screenshot"
+                                             width="48" height="48"/>
+                                    </a>
+                            </td>
+                        <td width="130"><span class="nested-group-step">SUCCESS</span></td>
+                        <td width="100"><span class="nested-group-step">0.9s</span></td>
+                    </tr>
+
+                                </table>
+                            </td>
+                        </tr>
+                    <tr class="test-SUCCESS">
+
+                        <td width="90" class="step-icon">
+                            <a name="0-1-2"></a>
+                                <a href="javaScript:void(0)" onClick="toggleDiv('stepSection0-1-2')"
+                                   style="display:block">
+                                    <i class="fa fa-plus-square-o imgstepSection0-1-2 success-icon"
+                                       style="margin-left: 60px; float:left; padding-right:5px"></i>
+                                </a>
+                        </td>
+
+                        <td class="step-description-column">
+                            <div class="step-description">
+                                <a href="javaScript:void(0)" onClick="toggleDiv('stepSection0-1-2')"
+                                   style="display:block;">
+                                    <span class="nested-step">
+                                                Usuario config producto
+                                        </span>
+                                </a>
+                                <span class="evidence">
+                                </span>
+                            </div>
+                        </td>
+
+                            <td width="160" class="SUCCESS-text">
+                                    <a href="2c070487ec6de32e0d65f2355f155843683cde905d91df39e14e55ec2c141f76_screenshots.html#screenshots?screenshot=17">
+                                        <img src="9010a67ee4ec99716ecd22222f986e35bd4cea4d69546b208d933ebecfcb86f9.png"
+                                             href="9010a67ee4ec99716ecd22222f986e35bd4cea4d69546b208d933ebecfcb86f9.png"
+                                             class="screenshot"
+                                             width="48" height="48"/>
+                                    </a>
+                                    <i class="fas fa-arrow-right"></i>
+
+                                    <a href="2c070487ec6de32e0d65f2355f155843683cde905d91df39e14e55ec2c141f76_screenshots.html#screenshots?screenshot=24">
+                                        <img src="49e4881364e283d8b6b2ee6c13894f271a314e1861ee1b496726c5d9c3a94c6f.png"
+                                             href="49e4881364e283d8b6b2ee6c13894f271a314e1861ee1b496726c5d9c3a94c6f.png"
+                                             class="screenshot"
+                                             width="48" height="48"/>
+                                    </a>
+                            </td>
+                        <td width="130"><span class="nested-step">SUCCESS</span></td>
+                        <td width="100"><span class="nested-step">4.9s</span></td>
+                    </tr>
+                        <tr>
+                            <td colspan="5">
+                                <table id="stepSection0-1-2" class="step-table-nested" style="display:none;">
+
+                    <tr class="test-SUCCESS">
+
+                        <td width="110" class="step-icon">
+                            <a name="0-1-2-0"></a>
+                                <span style="margin-left: 80px;"
+                                      class="nested-group-icon"><a href='##beforetable'><i class='fa fa-check-circle-o success-icon ' title='SUCCESS'></i></a>
+                                </span>
+                        </td>
+
+                        <td class="step-description-column">
+                            <div class="step-description">
+                                    <span class="nested-group-step">
+                                                usuario clicks on Selecciona color
+                                        </span>
+                                <span class="evidence">
+                                </span>
+                            </div>
+                        </td>
+
+                            <td width="160" class="SUCCESS-text">
+                                    <a href="2c070487ec6de32e0d65f2355f155843683cde905d91df39e14e55ec2c141f76_screenshots.html#screenshots?screenshot=18">
+                                        <img src="2ca2222b7f7a60613b75cb544c8cd719539cecc4c03de799e9ea2f88f19be8b8.png"
+                                             href="2ca2222b7f7a60613b75cb544c8cd719539cecc4c03de799e9ea2f88f19be8b8.png"
+                                             class="screenshot"
+                                             width="48" height="48"/>
+                                    </a>
+                                    <i class="fas fa-arrow-right"></i>
+
+                                    <a href="2c070487ec6de32e0d65f2355f155843683cde905d91df39e14e55ec2c141f76_screenshots.html#screenshots?screenshot=19">
+                                        <img src="bee7023a0b5be79decdf84c3852c319fc24e6269d020c8d09351b676a53aafd7.png"
+                                             href="bee7023a0b5be79decdf84c3852c319fc24e6269d020c8d09351b676a53aafd7.png"
+                                             class="screenshot"
+                                             width="48" height="48"/>
+                                    </a>
+                            </td>
+                        <td width="130"><span class="nested-group-step">SUCCESS</span></td>
+                        <td width="100"><span class="nested-group-step">0.68s</span></td>
+                    </tr>
+                    <tr class="test-SUCCESS">
+
+                        <td width="110" class="step-icon">
+                            <a name="0-1-2-1"></a>
+                                <span style="margin-left: 80px;"
+                                      class="nested-group-icon"><a href='##beforetable'><i class='fa fa-check-circle-o success-icon ' title='SUCCESS'></i></a>
+                                </span>
+                        </td>
+
+                        <td class="step-description-column">
+                            <div class="step-description">
+                                    <span class="nested-group-step">
+                                                usuario enters '2' into Texto de seleccionar cantidad
+                                        </span>
+                                <span class="evidence">
+                                </span>
+                            </div>
+                        </td>
+
+                            <td width="160" class="SUCCESS-text">
+                                    <a href="2c070487ec6de32e0d65f2355f155843683cde905d91df39e14e55ec2c141f76_screenshots.html#screenshots?screenshot=20">
+                                        <img src="bee7023a0b5be79decdf84c3852c319fc24e6269d020c8d09351b676a53aafd7.png"
+                                             href="bee7023a0b5be79decdf84c3852c319fc24e6269d020c8d09351b676a53aafd7.png"
+                                             class="screenshot"
+                                             width="48" height="48"/>
+                                    </a>
+                                    <i class="fas fa-arrow-right"></i>
+
+                                    <a href="2c070487ec6de32e0d65f2355f155843683cde905d91df39e14e55ec2c141f76_screenshots.html#screenshots?screenshot=21">
+                                        <img src="d63c325986a77fe19fb3183ec9a828a752791f36228ec3d5f8537fbc5c5ac78b.png"
+                                             href="d63c325986a77fe19fb3183ec9a828a752791f36228ec3d5f8537fbc5c5ac78b.png"
+                                             class="screenshot"
+                                             width="48" height="48"/>
+                                    </a>
+                            </td>
+                        <td width="130"><span class="nested-group-step">SUCCESS</span></td>
+                        <td width="100"><span class="nested-group-step">0.62s</span></td>
+                    </tr>
+                    <tr class="test-SUCCESS">
+
+                        <td width="110" class="step-icon">
+                            <a name="0-1-2-2"></a>
+                                <span style="margin-left: 80px;"
+                                      class="nested-group-icon"><a href='##beforetable'><i class='fa fa-check-circle-o success-icon ' title='SUCCESS'></i></a>
+                                </span>
+                        </td>
+
+                        <td class="step-description-column">
+                            <div class="step-description">
+                                    <span class="nested-group-step">
+                                                usuario clicks on Boton de comprar ahora
+                                        </span>
+                                <span class="evidence">
+                                </span>
+                            </div>
+                        </td>
+
+                            <td width="160" class="SUCCESS-text">
+                                    <a href="2c070487ec6de32e0d65f2355f155843683cde905d91df39e14e55ec2c141f76_screenshots.html#screenshots?screenshot=22">
+                                        <img src="d63c325986a77fe19fb3183ec9a828a752791f36228ec3d5f8537fbc5c5ac78b.png"
+                                             href="d63c325986a77fe19fb3183ec9a828a752791f36228ec3d5f8537fbc5c5ac78b.png"
+                                             class="screenshot"
+                                             width="48" height="48"/>
+                                    </a>
+                                    <i class="fas fa-arrow-right"></i>
+
+                                    <a href="2c070487ec6de32e0d65f2355f155843683cde905d91df39e14e55ec2c141f76_screenshots.html#screenshots?screenshot=23">
+                                        <img src="49e4881364e283d8b6b2ee6c13894f271a314e1861ee1b496726c5d9c3a94c6f.png"
+                                             href="49e4881364e283d8b6b2ee6c13894f271a314e1861ee1b496726c5d9c3a94c6f.png"
+                                             class="screenshot"
+                                             width="48" height="48"/>
+                                    </a>
+                            </td>
+                        <td width="130"><span class="nested-group-step">SUCCESS</span></td>
+                        <td width="100"><span class="nested-group-step">0.4s</span></td>
+                    </tr>
+
+                                </table>
+                            </td>
+                        </tr>
+
+                                </table>
+                            </td>
+                        </tr>
+                    <tr class="test-SUCCESS">
+
+                        <td width="70" class="step-icon">
+                            <a name="0-2"></a>
+                                <a href="javaScript:void(0)" onClick="toggleDiv('stepSection0-2')"
+                                   style="display:block">
+                                    <i class="fa fa-plus-square-o imgstepSection0-2 success-icon"
+                                       style="margin-left: 40px; float:left; padding-right:5px"></i>
+                                </a>
+                        </td>
+
+                        <td class="step-description-column">
+                            <div class="step-description">
+                                <a href="javaScript:void(0)" onClick="toggleDiv('stepSection0-2')"
+                                   style="display:block;">
+                                    <span class="nested-step">
+                                                Then Valida que el producto sea agregado al carrito de compras
+                                        </span>
+                                </a>
+                                <span class="evidence">
+                                </span>
+                            </div>
+                        </td>
+
+                            <td width="160" class="SUCCESS-text">
+                                    <a href="2c070487ec6de32e0d65f2355f155843683cde905d91df39e14e55ec2c141f76_screenshots.html#screenshots?screenshot=28">
+                                        <img src="49e4881364e283d8b6b2ee6c13894f271a314e1861ee1b496726c5d9c3a94c6f.png"
+                                             href="49e4881364e283d8b6b2ee6c13894f271a314e1861ee1b496726c5d9c3a94c6f.png"
+                                             class="screenshot"
+                                             width="48" height="48"/>
+                                    </a>
+                                    <i class="fas fa-arrow-right"></i>
+
+                                    <a href="2c070487ec6de32e0d65f2355f155843683cde905d91df39e14e55ec2c141f76_screenshots.html#screenshots?screenshot=31">
+                                        <img src="62e90733ad92eb41c8a26a965bf26ab63dd3dfb5a89cf4e4de6210bbd5b34642.png"
+                                             href="62e90733ad92eb41c8a26a965bf26ab63dd3dfb5a89cf4e4de6210bbd5b34642.png"
+                                             class="screenshot"
+                                             width="48" height="48"/>
+                                    </a>
+                            </td>
+                        <td width="130"><span class="nested-step">SUCCESS</span></td>
+                        <td width="100"><span class="nested-step">0.6s</span></td>
+                    </tr>
+                        <tr>
+                            <td colspan="5">
+                                <table id="stepSection0-2" class="step-table-nested" style="display:none;">
+
+                    <tr class="test-SUCCESS">
+
+                        <td width="90" class="step-icon">
+                            <a name="0-2-0"></a>
+                                <span style="margin-left: 60px;"
+                                      class="nested-group-icon"><a href='##beforetable'><i class='fa fa-check-circle-o success-icon ' title='SUCCESS'></i></a>
+                                </span>
+                        </td>
+
+                        <td class="step-description-column">
+                            <div class="step-description">
+                                    <span class="nested-group-step">
+                                                Then Titulo de iniciar sesion should be an element that is present
+                                        </span>
+                                <span class="evidence">
+                                </span>
+                            </div>
+                        </td>
+
+                            <td width="160" class="SUCCESS-text">
+                                    <a href="2c070487ec6de32e0d65f2355f155843683cde905d91df39e14e55ec2c141f76_screenshots.html#screenshots?screenshot=29">
+                                        <img src="ee0c4c5600c75d134f57ca6ff5fa8b6aff10fb6333465e7fb0542be93c46defa.png"
+                                             href="ee0c4c5600c75d134f57ca6ff5fa8b6aff10fb6333465e7fb0542be93c46defa.png"
+                                             class="screenshot"
+                                             width="48" height="48"/>
+                                    </a>
+                                    <i class="fas fa-arrow-right"></i>
+
+                                    <a href="2c070487ec6de32e0d65f2355f155843683cde905d91df39e14e55ec2c141f76_screenshots.html#screenshots?screenshot=30">
+                                        <img src="62e90733ad92eb41c8a26a965bf26ab63dd3dfb5a89cf4e4de6210bbd5b34642.png"
+                                             href="62e90733ad92eb41c8a26a965bf26ab63dd3dfb5a89cf4e4de6210bbd5b34642.png"
+                                             class="screenshot"
+                                             width="48" height="48"/>
+                                    </a>
+                            </td>
+                        <td width="130"><span class="nested-group-step">SUCCESS</span></td>
+                        <td width="100"><span class="nested-group-step">0.49s</span></td>
+                    </tr>
+
+                                </table>
+                            </td>
+                        </tr>
+
+                                </table>
+                            </td>
+                        </tr>
+                    <tr class="test-SUCCESS">
+
+                        <td width="50" class="step-icon">
+                            <a name="1"></a>
+                                <a href="javaScript:void(0)" onClick="toggleDiv('stepSection1')"
+                                   style="display:block">
+                                    <i class="fa fa-plus-square-o imgstepSection1 success-icon"
+                                       style="margin-left: 20px; float:left; padding-right:5px"></i>
+                                </a>
+                        </td>
+
+                        <td class="step-description-column">
+                            <div class="step-description">
+                                <a href="javaScript:void(0)" onClick="toggleDiv('stepSection1')"
+                                   style="display:block;">
+                                    <span class="top-level-step">
+                                                Example: {categoria=Ropa de Mujer, seccion=Pantalones, producto=Pantalones Cargo, color=Black, cantidad=3}
+                                        </span>
+                                </a>
+                                <span class="evidence">
+                                </span>
+                            </div>
+                        </td>
+
+                            <td width="160" class="SUCCESS-text">
+                                    <a href="2c070487ec6de32e0d65f2355f155843683cde905d91df39e14e55ec2c141f76_screenshots.html#screenshots?screenshot=34">
+                                        <img src="9010a67ee4ec99716ecd22222f986e35bd4cea4d69546b208d933ebecfcb86f9.png"
+                                             href="9010a67ee4ec99716ecd22222f986e35bd4cea4d69546b208d933ebecfcb86f9.png"
+                                             class="screenshot"
+                                             width="48" height="48"/>
+                                    </a>
+                                    <i class="fas fa-arrow-right"></i>
+
+                                    <a href="2c070487ec6de32e0d65f2355f155843683cde905d91df39e14e55ec2c141f76_screenshots.html#screenshots?screenshot=62">
+                                        <img src="8426dc55e334e7ed29b127896c92e02cc4f44584260d70ee71fc84345ef81205.png"
+                                             href="8426dc55e334e7ed29b127896c92e02cc4f44584260d70ee71fc84345ef81205.png"
+                                             class="screenshot"
+                                             width="48" height="48"/>
+                                    </a>
+                            </td>
+                        <td width="130"><span class="top-level-step">SUCCESS</span></td>
+                        <td width="100"><span class="top-level-step">37.14s</span></td>
+                    </tr>
+                        <tr>
+                            <td colspan="5">
+                                <table id="stepSection1" class="step-table-nested" style="display:none;">
+
+                    <tr class="test-SUCCESS">
+
+                        <td width="70" class="step-icon">
+                            <a name="1-0"></a>
+                                <a href="javaScript:void(0)" onClick="toggleDiv('stepSection1-0')"
+                                   style="display:block">
+                                    <i class="fa fa-plus-square-o imgstepSection1-0 success-icon"
+                                       style="margin-left: 40px; float:left; padding-right:5px"></i>
+                                </a>
+                        </td>
+
+                        <td class="step-description-column">
+                            <div class="step-description">
+                                <a href="javaScript:void(0)" onClick="toggleDiv('stepSection1-0')"
+                                   style="display:block;">
+                                    <span class="nested-step">
+                                                Given Deseo buscar un producto en shopee
+                                        </span>
+                                </a>
+                                <span class="evidence">
+                                </span>
+                            </div>
+                        </td>
+
+                            <td width="160" class="SUCCESS-text">
+
+                                    <a href="2c070487ec6de32e0d65f2355f155843683cde905d91df39e14e55ec2c141f76_screenshots.html#screenshots?screenshot=37">
+                                        <img src="9010a67ee4ec99716ecd22222f986e35bd4cea4d69546b208d933ebecfcb86f9.png"
+                                             href="9010a67ee4ec99716ecd22222f986e35bd4cea4d69546b208d933ebecfcb86f9.png"
+                                             class="screenshot"
+                                             width="48" height="48"/>
+                                    </a>
+                            </td>
+                        <td width="130"><span class="nested-step">SUCCESS</span></td>
+                        <td width="100"><span class="nested-step">3.99s</span></td>
+                    </tr>
+                        <tr>
+                            <td colspan="5">
+                                <table id="stepSection1-0" class="step-table-nested" style="display:none;">
+
+                    <tr class="test-SUCCESS">
+
+                        <td width="90" class="step-icon">
+                            <a name="1-0-0"></a>
+                                <span style="margin-left: 60px;"
+                                      class="nested-group-icon"><a href='##beforetable'><i class='fa fa-check-circle-o success-icon ' title='SUCCESS'></i></a>
+                                </span>
+                        </td>
+
+                        <td class="step-description-column">
+                            <div class="step-description">
+                                    <span class="nested-group-step">
+                                                usuario opens the Shopee home
+                                        </span>
+                                <span class="evidence">
+                                </span>
+                            </div>
+                        </td>
+
+                            <td width="160" class="SUCCESS-text">
+
+                                    <a href="2c070487ec6de32e0d65f2355f155843683cde905d91df39e14e55ec2c141f76_screenshots.html#screenshots?screenshot=36">
+                                        <img src="9010a67ee4ec99716ecd22222f986e35bd4cea4d69546b208d933ebecfcb86f9.png"
+                                             href="9010a67ee4ec99716ecd22222f986e35bd4cea4d69546b208d933ebecfcb86f9.png"
+                                             class="screenshot"
+                                             width="48" height="48"/>
+                                    </a>
+                            </td>
+                        <td width="130"><span class="nested-group-step">SUCCESS</span></td>
+                        <td width="100"><span class="nested-group-step">3.96s</span></td>
+                    </tr>
+
+                                </table>
+                            </td>
+                        </tr>
+                    <tr class="test-SUCCESS">
+
+                        <td width="70" class="step-icon">
+                            <a name="1-1"></a>
+                                <a href="javaScript:void(0)" onClick="toggleDiv('stepSection1-1')"
+                                   style="display:block">
+                                    <i class="fa fa-plus-square-o imgstepSection1-1 success-icon"
+                                       style="margin-left: 40px; float:left; padding-right:5px"></i>
+                                </a>
+                        </td>
+
+                        <td class="step-description-column">
+                            <div class="step-description">
+                                <a href="javaScript:void(0)" onClick="toggleDiv('stepSection1-1')"
+                                   style="display:block;">
+                                    <span class="nested-step">
+                                                When Selecciona la categoria "Ropa de Mujer", seccion "Pantalones" el producto "Pantalones Cargo" y sus especificaciones "Black" "3"
+                                        </span>
+                                </a>
+                                <span class="evidence">
+                                </span>
+                            </div>
+                        </td>
+
+                            <td width="160" class="SUCCESS-text">
+                                    <a href="2c070487ec6de32e0d65f2355f155843683cde905d91df39e14e55ec2c141f76_screenshots.html#screenshots?screenshot=38">
+                                        <img src="9010a67ee4ec99716ecd22222f986e35bd4cea4d69546b208d933ebecfcb86f9.png"
+                                             href="9010a67ee4ec99716ecd22222f986e35bd4cea4d69546b208d933ebecfcb86f9.png"
+                                             class="screenshot"
+                                             width="48" height="48"/>
+                                    </a>
+                                    <i class="fas fa-arrow-right"></i>
+
+                                    <a href="2c070487ec6de32e0d65f2355f155843683cde905d91df39e14e55ec2c141f76_screenshots.html#screenshots?screenshot=57">
+                                        <img src="49e4881364e283d8b6b2ee6c13894f271a314e1861ee1b496726c5d9c3a94c6f.png"
+                                             href="49e4881364e283d8b6b2ee6c13894f271a314e1861ee1b496726c5d9c3a94c6f.png"
+                                             class="screenshot"
+                                             width="48" height="48"/>
+                                    </a>
+                            </td>
+                        <td width="130"><span class="nested-step">SUCCESS</span></td>
+                        <td width="100"><span class="nested-step">32.62s</span></td>
+                    </tr>
+                        <tr>
+                            <td colspan="5">
+                                <table id="stepSection1-1" class="step-table-nested" style="display:none;">
+
+                    <tr class="test-SUCCESS">
+
+                        <td width="90" class="step-icon">
+                            <a name="1-1-0"></a>
+                                <a href="javaScript:void(0)" onClick="toggleDiv('stepSection1-1-0')"
+                                   style="display:block">
+                                    <i class="fa fa-plus-square-o imgstepSection1-1-0 success-icon"
+                                       style="margin-left: 60px; float:left; padding-right:5px"></i>
+                                </a>
+                        </td>
+
+                        <td class="step-description-column">
+                            <div class="step-description">
+                                <a href="javaScript:void(0)" onClick="toggleDiv('stepSection1-1-0')"
+                                   style="display:block;">
+                                    <span class="nested-step">
+                                                Usuario buscar producto
+                                        </span>
+                                </a>
+                                <span class="evidence">
+                                </span>
+                            </div>
+                        </td>
+
+                            <td width="160" class="SUCCESS-text">
+                                    <a href="2c070487ec6de32e0d65f2355f155843683cde905d91df39e14e55ec2c141f76_screenshots.html#screenshots?screenshot=39">
+                                        <img src="9010a67ee4ec99716ecd22222f986e35bd4cea4d69546b208d933ebecfcb86f9.png"
+                                             href="9010a67ee4ec99716ecd22222f986e35bd4cea4d69546b208d933ebecfcb86f9.png"
+                                             class="screenshot"
+                                             width="48" height="48"/>
+                                    </a>
+                                    <i class="fas fa-arrow-right"></i>
+
+                                    <a href="2c070487ec6de32e0d65f2355f155843683cde905d91df39e14e55ec2c141f76_screenshots.html#screenshots?screenshot=42">
+                                        <img src="d04b3a6375e1a763a8c18a609c9f65bd8926dbed5c2d582a519bc7efb227d75d.png"
+                                             href="d04b3a6375e1a763a8c18a609c9f65bd8926dbed5c2d582a519bc7efb227d75d.png"
+                                             class="screenshot"
+                                             width="48" height="48"/>
+                                    </a>
+                            </td>
+                        <td width="130"><span class="nested-step">SUCCESS</span></td>
+                        <td width="100"><span class="nested-step">24.38s</span></td>
+                    </tr>
+                        <tr>
+                            <td colspan="5">
+                                <table id="stepSection1-1-0" class="step-table-nested" style="display:none;">
+
+                    <tr class="test-SUCCESS">
+
+                        <td width="110" class="step-icon">
+                            <a name="1-1-0-0"></a>
+                                <span style="margin-left: 80px;"
+                                      class="nested-group-icon"><a href='##beforetable'><i class='fa fa-check-circle-o success-icon ' title='SUCCESS'></i></a>
+                                </span>
+                        </td>
+
+                        <td class="step-description-column">
+                            <div class="step-description">
+                                    <span class="nested-group-step">
+                                                usuario clicks on Selecciona el tipo de categoria por titulo
+                                        </span>
+                                <span class="evidence">
+                                </span>
+                            </div>
+                        </td>
+
+                            <td width="160" class="SUCCESS-text">
+                                    <a href="2c070487ec6de32e0d65f2355f155843683cde905d91df39e14e55ec2c141f76_screenshots.html#screenshots?screenshot=40">
+                                        <img src="84322253bfe93e6a35e67c0f02444ce657606e4290b87fd6180d8ce614bb19e0.png"
+                                             href="84322253bfe93e6a35e67c0f02444ce657606e4290b87fd6180d8ce614bb19e0.png"
+                                             class="screenshot"
+                                             width="48" height="48"/>
+                                    </a>
+                                    <i class="fas fa-arrow-right"></i>
+
+                                    <a href="2c070487ec6de32e0d65f2355f155843683cde905d91df39e14e55ec2c141f76_screenshots.html#screenshots?screenshot=41">
+                                        <img src="d04b3a6375e1a763a8c18a609c9f65bd8926dbed5c2d582a519bc7efb227d75d.png"
+                                             href="d04b3a6375e1a763a8c18a609c9f65bd8926dbed5c2d582a519bc7efb227d75d.png"
+                                             class="screenshot"
+                                             width="48" height="48"/>
+                                    </a>
+                            </td>
+                        <td width="130"><span class="nested-group-step">SUCCESS</span></td>
+                        <td width="100"><span class="nested-group-step">0.79s</span></td>
+                    </tr>
+
+                                </table>
+                            </td>
+                        </tr>
+                    <tr class="test-SUCCESS">
+
+                        <td width="90" class="step-icon">
+                            <a name="1-1-1"></a>
+                                <a href="javaScript:void(0)" onClick="toggleDiv('stepSection1-1-1')"
+                                   style="display:block">
+                                    <i class="fa fa-plus-square-o imgstepSection1-1-1 success-icon"
+                                       style="margin-left: 60px; float:left; padding-right:5px"></i>
+                                </a>
+                        </td>
+
+                        <td class="step-description-column">
+                            <div class="step-description">
+                                <a href="javaScript:void(0)" onClick="toggleDiv('stepSection1-1-1')"
+                                   style="display:block;">
+                                    <span class="nested-step">
+                                                Usuario elegir seccion
+                                        </span>
+                                </a>
+                                <span class="evidence">
+                                </span>
+                            </div>
+                        </td>
+
+                            <td width="160" class="SUCCESS-text">
+                                    <a href="2c070487ec6de32e0d65f2355f155843683cde905d91df39e14e55ec2c141f76_screenshots.html#screenshots?screenshot=44">
+                                        <img src="d04b3a6375e1a763a8c18a609c9f65bd8926dbed5c2d582a519bc7efb227d75d.png"
+                                             href="d04b3a6375e1a763a8c18a609c9f65bd8926dbed5c2d582a519bc7efb227d75d.png"
+                                             class="screenshot"
+                                             width="48" height="48"/>
+                                    </a>
+                                    <i class="fas fa-arrow-right"></i>
+
+                                    <a href="2c070487ec6de32e0d65f2355f155843683cde905d91df39e14e55ec2c141f76_screenshots.html#screenshots?screenshot=49">
+                                        <img src="58a1c0539c3f552b48ff1e9ec7c18cf9f64efe3a199220f89d02bf55d432f34c.png"
+                                             href="58a1c0539c3f552b48ff1e9ec7c18cf9f64efe3a199220f89d02bf55d432f34c.png"
+                                             class="screenshot"
+                                             width="48" height="48"/>
+                                    </a>
+                            </td>
+                        <td width="130"><span class="nested-step">SUCCESS</span></td>
+                        <td width="100"><span class="nested-step">3.76s</span></td>
+                    </tr>
+                        <tr>
+                            <td colspan="5">
+                                <table id="stepSection1-1-1" class="step-table-nested" style="display:none;">
+
+                    <tr class="test-SUCCESS">
+
+                        <td width="110" class="step-icon">
+                            <a name="1-1-1-0"></a>
+                                <span style="margin-left: 80px;"
+                                      class="nested-group-icon"><a href='##beforetable'><i class='fa fa-check-circle-o success-icon ' title='SUCCESS'></i></a>
+                                </span>
+                        </td>
+
+                        <td class="step-description-column">
+                            <div class="step-description">
+                                    <span class="nested-group-step">
+                                                usuario clicks on Selector de seccion de producto
+                                        </span>
+                                <span class="evidence">
+                                </span>
+                            </div>
+                        </td>
+
+                            <td width="160" class="SUCCESS-text">
+                                    <a href="2c070487ec6de32e0d65f2355f155843683cde905d91df39e14e55ec2c141f76_screenshots.html#screenshots?screenshot=45">
+                                        <img src="a03dc33b48867dd3c8b2281fa14d48eeffb0bfc5cd348370d3c6ae9803808805.png"
+                                             href="a03dc33b48867dd3c8b2281fa14d48eeffb0bfc5cd348370d3c6ae9803808805.png"
+                                             class="screenshot"
+                                             width="48" height="48"/>
+                                    </a>
+                                    <i class="fas fa-arrow-right"></i>
+
+                                    <a href="2c070487ec6de32e0d65f2355f155843683cde905d91df39e14e55ec2c141f76_screenshots.html#screenshots?screenshot=46">
+                                        <img src="6df29679a245c2062ce6b9d6883d3f2e2e2211c4ca264ca304e9913fca9907d2.png"
+                                             href="6df29679a245c2062ce6b9d6883d3f2e2e2211c4ca264ca304e9913fca9907d2.png"
+                                             class="screenshot"
+                                             width="48" height="48"/>
+                                    </a>
+                            </td>
+                        <td width="130"><span class="nested-group-step">SUCCESS</span></td>
+                        <td width="100"><span class="nested-group-step">0.72s</span></td>
+                    </tr>
+                    <tr class="test-SUCCESS">
+
+                        <td width="110" class="step-icon">
+                            <a name="1-1-1-1"></a>
+                                <span style="margin-left: 80px;"
+                                      class="nested-group-icon"><a href='##beforetable'><i class='fa fa-check-circle-o success-icon ' title='SUCCESS'></i></a>
+                                </span>
+                        </td>
+
+                        <td class="step-description-column">
+                            <div class="step-description">
+                                    <span class="nested-group-step">
+                                                usuario clicks on Selecciona producto por titulo
+                                        </span>
+                                <span class="evidence">
+                                </span>
+                            </div>
+                        </td>
+
+                            <td width="160" class="SUCCESS-text">
+                                    <a href="2c070487ec6de32e0d65f2355f155843683cde905d91df39e14e55ec2c141f76_screenshots.html#screenshots?screenshot=47">
+                                        <img src="6df29679a245c2062ce6b9d6883d3f2e2e2211c4ca264ca304e9913fca9907d2.png"
+                                             href="6df29679a245c2062ce6b9d6883d3f2e2e2211c4ca264ca304e9913fca9907d2.png"
+                                             class="screenshot"
+                                             width="48" height="48"/>
+                                    </a>
+                                    <i class="fas fa-arrow-right"></i>
+
+                                    <a href="2c070487ec6de32e0d65f2355f155843683cde905d91df39e14e55ec2c141f76_screenshots.html#screenshots?screenshot=48">
+                                        <img src="58a1c0539c3f552b48ff1e9ec7c18cf9f64efe3a199220f89d02bf55d432f34c.png"
+                                             href="58a1c0539c3f552b48ff1e9ec7c18cf9f64efe3a199220f89d02bf55d432f34c.png"
+                                             class="screenshot"
+                                             width="48" height="48"/>
+                                    </a>
+                            </td>
+                        <td width="130"><span class="nested-group-step">SUCCESS</span></td>
+                        <td width="100"><span class="nested-group-step">1.01s</span></td>
+                    </tr>
+
+                                </table>
+                            </td>
+                        </tr>
+                    <tr class="test-SUCCESS">
+
+                        <td width="90" class="step-icon">
+                            <a name="1-1-2"></a>
+                                <a href="javaScript:void(0)" onClick="toggleDiv('stepSection1-1-2')"
+                                   style="display:block">
+                                    <i class="fa fa-plus-square-o imgstepSection1-1-2 success-icon"
+                                       style="margin-left: 60px; float:left; padding-right:5px"></i>
+                                </a>
+                        </td>
+
+                        <td class="step-description-column">
+                            <div class="step-description">
+                                <a href="javaScript:void(0)" onClick="toggleDiv('stepSection1-1-2')"
+                                   style="display:block;">
+                                    <span class="nested-step">
+                                                Usuario config producto
+                                        </span>
+                                </a>
+                                <span class="evidence">
+                                </span>
+                            </div>
+                        </td>
+
+                            <td width="160" class="SUCCESS-text">
+                                    <a href="2c070487ec6de32e0d65f2355f155843683cde905d91df39e14e55ec2c141f76_screenshots.html#screenshots?screenshot=51">
+                                        <img src="58a1c0539c3f552b48ff1e9ec7c18cf9f64efe3a199220f89d02bf55d432f34c.png"
+                                             href="58a1c0539c3f552b48ff1e9ec7c18cf9f64efe3a199220f89d02bf55d432f34c.png"
+                                             class="screenshot"
+                                             width="48" height="48"/>
+                                    </a>
+                                    <i class="fas fa-arrow-right"></i>
+
+                                    <a href="2c070487ec6de32e0d65f2355f155843683cde905d91df39e14e55ec2c141f76_screenshots.html#screenshots?screenshot=58">
+                                        <img src="49e4881364e283d8b6b2ee6c13894f271a314e1861ee1b496726c5d9c3a94c6f.png"
+                                             href="49e4881364e283d8b6b2ee6c13894f271a314e1861ee1b496726c5d9c3a94c6f.png"
+                                             class="screenshot"
+                                             width="48" height="48"/>
+                                    </a>
+                            </td>
+                        <td width="130"><span class="nested-step">SUCCESS</span></td>
+                        <td width="100"><span class="nested-step">4.45s</span></td>
+                    </tr>
+                        <tr>
+                            <td colspan="5">
+                                <table id="stepSection1-1-2" class="step-table-nested" style="display:none;">
+
+                    <tr class="test-SUCCESS">
+
+                        <td width="110" class="step-icon">
+                            <a name="1-1-2-0"></a>
+                                <span style="margin-left: 80px;"
+                                      class="nested-group-icon"><a href='##beforetable'><i class='fa fa-check-circle-o success-icon ' title='SUCCESS'></i></a>
+                                </span>
+                        </td>
+
+                        <td class="step-description-column">
+                            <div class="step-description">
+                                    <span class="nested-group-step">
+                                                usuario clicks on Selecciona color
+                                        </span>
+                                <span class="evidence">
+                                </span>
+                            </div>
+                        </td>
+
+                            <td width="160" class="SUCCESS-text">
+                                    <a href="2c070487ec6de32e0d65f2355f155843683cde905d91df39e14e55ec2c141f76_screenshots.html#screenshots?screenshot=52">
+                                        <img src="1da8002340f0b5c01274975744d8cfe6af6dc0c444c1cc12e48213a5c3c12df2.png"
+                                             href="1da8002340f0b5c01274975744d8cfe6af6dc0c444c1cc12e48213a5c3c12df2.png"
+                                             class="screenshot"
+                                             width="48" height="48"/>
+                                    </a>
+                                    <i class="fas fa-arrow-right"></i>
+
+                                    <a href="2c070487ec6de32e0d65f2355f155843683cde905d91df39e14e55ec2c141f76_screenshots.html#screenshots?screenshot=53">
+                                        <img src="aa446f40a6398cf861e5554713071c2474e5b9234f01bc1d61a44ce9cf483469.png"
+                                             href="aa446f40a6398cf861e5554713071c2474e5b9234f01bc1d61a44ce9cf483469.png"
+                                             class="screenshot"
+                                             width="48" height="48"/>
+                                    </a>
+                            </td>
+                        <td width="130"><span class="nested-group-step">SUCCESS</span></td>
+                        <td width="100"><span class="nested-group-step">0.52s</span></td>
+                    </tr>
+                    <tr class="test-SUCCESS">
+
+                        <td width="110" class="step-icon">
+                            <a name="1-1-2-1"></a>
+                                <span style="margin-left: 80px;"
+                                      class="nested-group-icon"><a href='##beforetable'><i class='fa fa-check-circle-o success-icon ' title='SUCCESS'></i></a>
+                                </span>
+                        </td>
+
+                        <td class="step-description-column">
+                            <div class="step-description">
+                                    <span class="nested-group-step">
+                                                usuario enters '3' into Texto de seleccionar cantidad
+                                        </span>
+                                <span class="evidence">
+                                </span>
+                            </div>
+                        </td>
+
+                            <td width="160" class="SUCCESS-text">
+                                    <a href="2c070487ec6de32e0d65f2355f155843683cde905d91df39e14e55ec2c141f76_screenshots.html#screenshots?screenshot=54">
+                                        <img src="aa446f40a6398cf861e5554713071c2474e5b9234f01bc1d61a44ce9cf483469.png"
+                                             href="aa446f40a6398cf861e5554713071c2474e5b9234f01bc1d61a44ce9cf483469.png"
+                                             class="screenshot"
+                                             width="48" height="48"/>
+                                    </a>
+                                    <i class="fas fa-arrow-right"></i>
+
+                                    <a href="2c070487ec6de32e0d65f2355f155843683cde905d91df39e14e55ec2c141f76_screenshots.html#screenshots?screenshot=55">
+                                        <img src="490cd8ac135bfe34f988bb5493d33d67ef7004c624d577ef7dd900eb8061b4e3.png"
+                                             href="490cd8ac135bfe34f988bb5493d33d67ef7004c624d577ef7dd900eb8061b4e3.png"
+                                             class="screenshot"
+                                             width="48" height="48"/>
+                                    </a>
+                            </td>
+                        <td width="130"><span class="nested-group-step">SUCCESS</span></td>
+                        <td width="100"><span class="nested-group-step">0.41s</span></td>
+                    </tr>
+                    <tr class="test-SUCCESS">
+
+                        <td width="110" class="step-icon">
+                            <a name="1-1-2-2"></a>
+                                <span style="margin-left: 80px;"
+                                      class="nested-group-icon"><a href='##beforetable'><i class='fa fa-check-circle-o success-icon ' title='SUCCESS'></i></a>
+                                </span>
+                        </td>
+
+                        <td class="step-description-column">
+                            <div class="step-description">
+                                    <span class="nested-group-step">
+                                                usuario clicks on Boton de comprar ahora
+                                        </span>
+                                <span class="evidence">
+                                </span>
+                            </div>
+                        </td>
+
+                            <td width="160" class="SUCCESS-text">
+                                    <a href="2c070487ec6de32e0d65f2355f155843683cde905d91df39e14e55ec2c141f76_screenshots.html#screenshots?screenshot=56">
+                                        <img src="490cd8ac135bfe34f988bb5493d33d67ef7004c624d577ef7dd900eb8061b4e3.png"
+                                             href="490cd8ac135bfe34f988bb5493d33d67ef7004c624d577ef7dd900eb8061b4e3.png"
+                                             class="screenshot"
+                                             width="48" height="48"/>
+                                    </a>
+                                    <i class="fas fa-arrow-right"></i>
+
+                                    <a href="2c070487ec6de32e0d65f2355f155843683cde905d91df39e14e55ec2c141f76_screenshots.html#screenshots?screenshot=57">
+                                        <img src="49e4881364e283d8b6b2ee6c13894f271a314e1861ee1b496726c5d9c3a94c6f.png"
+                                             href="49e4881364e283d8b6b2ee6c13894f271a314e1861ee1b496726c5d9c3a94c6f.png"
+                                             class="screenshot"
+                                             width="48" height="48"/>
+                                    </a>
+                            </td>
+                        <td width="130"><span class="nested-group-step">SUCCESS</span></td>
+                        <td width="100"><span class="nested-group-step">0.34s</span></td>
+                    </tr>
+
+                                </table>
+                            </td>
+                        </tr>
+
+                                </table>
+                            </td>
+                        </tr>
+                    <tr class="test-SUCCESS">
+
+                        <td width="70" class="step-icon">
+                            <a name="1-2"></a>
+                                <a href="javaScript:void(0)" onClick="toggleDiv('stepSection1-2')"
+                                   style="display:block">
+                                    <i class="fa fa-plus-square-o imgstepSection1-2 success-icon"
+                                       style="margin-left: 40px; float:left; padding-right:5px"></i>
+                                </a>
+                        </td>
+
+                        <td class="step-description-column">
+                            <div class="step-description">
+                                <a href="javaScript:void(0)" onClick="toggleDiv('stepSection1-2')"
+                                   style="display:block;">
+                                    <span class="nested-step">
+                                                Then Valida que el producto sea agregado al carrito de compras
+                                        </span>
+                                </a>
+                                <span class="evidence">
+                                </span>
+                            </div>
+                        </td>
+
+                            <td width="160" class="SUCCESS-text">
+                                    <a href="2c070487ec6de32e0d65f2355f155843683cde905d91df39e14e55ec2c141f76_screenshots.html#screenshots?screenshot=62">
+                                        <img src="49e4881364e283d8b6b2ee6c13894f271a314e1861ee1b496726c5d9c3a94c6f.png"
+                                             href="49e4881364e283d8b6b2ee6c13894f271a314e1861ee1b496726c5d9c3a94c6f.png"
+                                             class="screenshot"
+                                             width="48" height="48"/>
+                                    </a>
+                                    <i class="fas fa-arrow-right"></i>
+
+                                    <a href="2c070487ec6de32e0d65f2355f155843683cde905d91df39e14e55ec2c141f76_screenshots.html#screenshots?screenshot=65">
+                                        <img src="8426dc55e334e7ed29b127896c92e02cc4f44584260d70ee71fc84345ef81205.png"
+                                             href="8426dc55e334e7ed29b127896c92e02cc4f44584260d70ee71fc84345ef81205.png"
+                                             class="screenshot"
+                                             width="48" height="48"/>
+                                    </a>
+                            </td>
+                        <td width="130"><span class="nested-step">SUCCESS</span></td>
+                        <td width="100"><span class="nested-step">0.53s</span></td>
+                    </tr>
+                        <tr>
+                            <td colspan="5">
+                                <table id="stepSection1-2" class="step-table-nested" style="display:none;">
+
+                    <tr class="test-SUCCESS">
+
+                        <td width="90" class="step-icon">
+                            <a name="1-2-0"></a>
+                                <span style="margin-left: 60px;"
+                                      class="nested-group-icon"><a href='##beforetable'><i class='fa fa-check-circle-o success-icon ' title='SUCCESS'></i></a>
+                                </span>
+                        </td>
+
+                        <td class="step-description-column">
+                            <div class="step-description">
+                                    <span class="nested-group-step">
+                                                Then Titulo de iniciar sesion should be an element that is present
+                                        </span>
+                                <span class="evidence">
+                                </span>
+                            </div>
+                        </td>
+
+                            <td width="160" class="SUCCESS-text">
+                                    <a href="2c070487ec6de32e0d65f2355f155843683cde905d91df39e14e55ec2c141f76_screenshots.html#screenshots?screenshot=63">
+                                        <img src="49e4881364e283d8b6b2ee6c13894f271a314e1861ee1b496726c5d9c3a94c6f.png"
+                                             href="49e4881364e283d8b6b2ee6c13894f271a314e1861ee1b496726c5d9c3a94c6f.png"
+                                             class="screenshot"
+                                             width="48" height="48"/>
+                                    </a>
+                                    <i class="fas fa-arrow-right"></i>
+
+                                    <a href="2c070487ec6de32e0d65f2355f155843683cde905d91df39e14e55ec2c141f76_screenshots.html#screenshots?screenshot=64">
+                                        <img src="8426dc55e334e7ed29b127896c92e02cc4f44584260d70ee71fc84345ef81205.png"
+                                             href="8426dc55e334e7ed29b127896c92e02cc4f44584260d70ee71fc84345ef81205.png"
+                                             class="screenshot"
+                                             width="48" height="48"/>
+                                    </a>
+                            </td>
+                        <td width="130"><span class="nested-group-step">SUCCESS</span></td>
+                        <td width="100"><span class="nested-group-step">0.51s</span></td>
+                    </tr>
+
+                                </table>
+                            </td>
+                        </tr>
+
+                                </table>
+                            </td>
+                        </tr>
+                <tr class="test-SUCCESS">
+                        <td colspan="3"></td>
+                    <td width="130"><span class="top-level-step"><em>SUCCESS</em></span></td>
+                    <td width="100"><span class="top-level-step"><em>78.49s</em></span></td>
+                </tr>
+
+            </table>
+        </div>
+    </div>
+
+    <div id="beforefooter"></div>
+
+
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-sm-12">
+                <span class="version">Serenity BDD version 2.1.4</span>
+            </div>
+        </div>
+    </div>
+
+    <script type="text/javascript">
+        function toggleDiv(divId) {
+            $("#" + divId).toggle();
+            var imgsrc = $(".img" + divId).attr('src');
+            if (imgsrc == 'images/plus.png') {
+                $(".img" + divId).attr("src", function () {
+                    return "images/minus.png";
+                });
+
+            } else {
+                $(".img" + divId).attr("src", function () {
+                    return "images/plus.png";
+                });
+            }
+        }
+    </script>
+
+
+    <script type="text/javascript">
+        //<![CDATA[
+
+        $(document).ready(function () {
+            $('img.screenshot').imgPreview({
+                imgCSS: {
+                    width: '500px'
+                },
+                distanceFromCursor: {top: 10, left: -200}
+            });
+        });
+
+        //]]>
+    </script>
+    <div id="imgPreviewContainer" style="position: absolute; top: 612px; left: 355px; display: none; " class=""><img
+                src="" style="display: none; "></div>
+    <div id="imgPreviewContainer2" style="position: absolute; top: 925px; left: 320px; display: none; " class="">
+        <img style="width: 200px; display: none; " src=""></div>
+    <div id="imgPreviewWithStyles" style="position: absolute; top: 1272px; left: 321px; display: none; " class="">
+        <img style="height: 200px; opacity: 1; display: none; " src=""></div>
+    <div id="imgPreviewWithStyles2" style="display: none; position: absolute; "><img style="height: 200px; "></div>
+    <div id="imgPreviewWithStyles3" style="display: none; position: absolute; "><img style="height: 200px; "></div>
+
+</div>
+</body>
+</html>
